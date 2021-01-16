@@ -5,15 +5,20 @@ const geocode = require('./utils/geocode.js')
 const forcast = require('./utils/forcast.js')
 
 const app  = express()
+const port = process.env.PORT || 3000
 
+
+//Define paths for Express config
 const publicDirectory = path.join(__dirname, '../public')
 const viewsDirectory = path.join(__dirname, '../templates/views')
 const partialPath = path.join(__dirname, '../templates/partials')
 
+//Setup handlebars engine and views locaion
 app.set('views', viewsDirectory)
 app.set('view engine', 'hbs' )
 hbs.registerPartials(partialPath)
 
+// Setup static directorty to serve
 app.use(express.static(publicDirectory))
 
 app.get('', (req, res) => {
@@ -92,6 +97,7 @@ app.get('*', (req, res) => {
     })
 })
 
-app.listen(3000, () => {
-    console.log('Server is up on port 3000.')
+
+app.listen(port, () => {
+    console.log('Server is up on port ' + port)
 })
