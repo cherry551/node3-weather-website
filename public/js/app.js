@@ -26,5 +26,3 @@ weatherForm.addEventListener('submit', (e) => {
         })
     })
 })
-
-console.log('Hello')
